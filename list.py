@@ -64,6 +64,12 @@ class LinkedList:
             self.head = current.next
         current = None
 
+    def delete(self):
+        while self.head:
+            current = self.head
+            self.head = current.next
+            current = None
+
     def size(self):
         n = 0
         current = self.head
@@ -90,11 +96,5 @@ a.append(6)
 a.append(7)
 a.printList()
 print a.size()
-a.deleteAt(8)
-a.printList()
-a.deleteAt(0)
-a.printList()
-a.deleteAt(5)
-a.printList()
-a.deleteAt(3)
+a.delete()
 a.printList()
