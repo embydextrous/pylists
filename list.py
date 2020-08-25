@@ -34,6 +34,14 @@ class LinkedList:
             newNode.next = current.next
             current.next = newNode
 
+    def size(self):
+        n = 0
+        current = self.head
+        while current:
+            current = current.next
+            n += 1
+        return n
+
     def printList(self):
         print "head ->",
         current = self.head
@@ -48,3 +56,4 @@ a.push(1)
 a.append(4)
 a.insertAfter(3, 2)
 a.printList()
+print a.size()
