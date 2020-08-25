@@ -34,6 +34,36 @@ class LinkedList:
             newNode.next = current.next
             current.next = newNode
 
+    def deleteKey(self, key):
+        if self.head is None:
+            return
+        current, prev = self.head, None
+        while current and current.data != key:
+            current, prev = current.next, current
+        if current is None:
+            return
+        if prev:
+            prev.next = current.next
+        else:
+            self.head = current.next
+        current = None
+
+    # position is 0-indexed
+    def deleteAt(self, position):
+        if position < 0:
+            return
+        current, prev = self.head, None
+        while current and position != 0:
+            current, prev = current.next, current
+            position -= 1
+        if current is None:
+            return    
+        if prev:
+            prev.next = current.next
+        else:
+            self.head = current.next
+        current = None
+
     def size(self):
         n = 0
         current = self.head
@@ -55,5 +85,16 @@ a.push(2)
 a.push(1)
 a.append(4)
 a.insertAfter(3, 2)
+a.append(5)
+a.append(6)
+a.append(7)
 a.printList()
 print a.size()
+a.deleteAt(8)
+a.printList()
+a.deleteAt(0)
+a.printList()
+a.deleteAt(5)
+a.printList()
+a.deleteAt(3)
+a.printList()
