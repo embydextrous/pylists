@@ -15,7 +15,7 @@ class LinkedList:
 
     def append(self, data):
         if self.head is None:
-            push(self, data)
+            self.push(data)
         else:
             newNode = Node(data)
             current = self.head
@@ -85,16 +85,3 @@ class LinkedList:
             print str(current.data) + " ->",
             current = current.next
         print "null"
-
-a = LinkedList()
-a.push(2)
-a.push(1)
-a.append(4)
-a.insertAfter(3, 2)
-a.append(5)
-a.append(6)
-a.append(7)
-a.printList()
-print a.size()
-a.delete()
-a.printList()
