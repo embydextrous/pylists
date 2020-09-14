@@ -1,7 +1,7 @@
 from list import LinkedList
 from list import Node
 
-def reverse(l, node, k):
+def reverse(node, k):
     current, next, prev, count = node, None, None, 0
     while current and count < k:
         next = current.next
@@ -10,7 +10,7 @@ def reverse(l, node, k):
         current = next
         count += 1
     if next:
-        node.next = reverse(l, next, k)
+        node.next = reverse(next, k) # Connects two lists
     return prev
 
 
@@ -19,6 +19,6 @@ for i in range(1, 9):
     l.append(i)
 
 l.printList()
-l.head = reverse(l, l.head, 3)
+l.head = reverse(l.head, 3)
 l.printList()
     
