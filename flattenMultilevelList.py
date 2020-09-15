@@ -17,6 +17,21 @@ def flatten(node):
                 tail = tail.next
         node = node.next
     return x
+
+def flattenDepthWise(node):
+    s = [node]
+    prev = None
+    while len(s) > 0:
+        a = s.pop()
+        if a.next:
+            s.append(a.next)
+        if a.child:
+            s.append(a.child)
+        if prev:
+            prev.next = a
+        prev = a
+    return node
+
     
 a = Node(10)
 a.next = Node(5)
@@ -36,7 +51,7 @@ a.next.next.next.child.child.next = Node(8)
 a.next.next.next.child.child.child = Node(19)
 a.next.next.next.child.child.child.next = Node(15)
 
-b = flatten(a)
+b = flattenDepthWise(a)
 while b:
     print b.data,
     b = b.next
