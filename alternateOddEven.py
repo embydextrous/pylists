@@ -1,6 +1,33 @@
 from list import LinkedList
 from list import Node
 
+def alternateOddEvenEfficient(l):
+    if l.head is None:
+        return
+    lastNode = l.head
+    while lastNode.next:
+        lastNode = lastNode.next
+    lNode = lastNode
+    i = l.head.data % 2
+    prev, current = None, l.head
+    while current != lastNode:
+        if current.data % 2 != i:
+            lNode.next = current
+            prev.next = current.next
+            current.next = None
+            lNode = lNode.next
+            current = prev.next
+        else:
+            prev, current = current, current.next
+    a = l.head
+    b = lastNode.next
+    while a != lastNode:
+        nextA, nextB = a.next, b.next
+        a.next, b.next = b, nextA
+        lastNode.next = nextB
+        a, b = nextA, nextB
+
+
 def alternateOddEven(l):
     even = []
     odd = []
@@ -27,7 +54,7 @@ l.append(6)
 l.append(7)
 l.append(8)
 l.printList()
-alternateOddEven(l)
+alternateOddEvenEfficient(l)
 l.printList()
 
         
