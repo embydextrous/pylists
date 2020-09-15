@@ -17,7 +17,10 @@ def isPalindrome(node):
 
 a = LinkedList()
 a.append("A")
-
+a.append("BC")
+a.append("D")
+a.append("DCB")
+a.append("A")
 
 a.printList()
 print isPalindrome(a.head)
