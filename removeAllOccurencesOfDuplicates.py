@@ -13,7 +13,6 @@ def removeAllOccurences(l):
                 l.head = None
             else:
                 prevLeft.next = None
-            print "case1", 
             l.printList()
         elif left != prevRight and left.data == prevRight.data:
             if prevLeft is None:
@@ -21,11 +20,9 @@ def removeAllOccurences(l):
             else:
                 prevLeft.next = right
             left, prevRight, right = right, right, right.next
-            print "case2", 
             l.printList()
         else:
             prevLeft, left, prevRight, right = left, left.next, right, right.next
-            print "case3", 
             l.printList()
         
 

@@ -1,42 +1,54 @@
 from list import LinkedList
 from list import Node
 
-def moveAllOccurencesToEnd(l, x):
+def sort(l):
     if l.head is None:
         return
-    prev, current = None, l.head
+    for i in range(3):
+        sortUtil(l, i)
+
+def sortUtil(l, i):
     lastNode = l.head
     while lastNode.next:
         lastNode = lastNode.next
-    firstKeyNode = None
-    while current and current != firstKeyNode:
-        if current.data == x:
-            if firstKeyNode is None:
-                firstKeyNode = current
-            if current == l.head:
+    firstInode = None
+    prev, current = None, l.head
+    while current and firstInode != current:
+        if current.data == i:
+            if firstInode is None:
+                firstInode = current
+            if prev is None:
                 l.head = current.next
                 lastNode.next = current
+                lastNode = lastNode.next
                 current.next = None
                 current = l.head
-                lastNode = lastNode.next
             else:
                 prev.next = current.next
                 lastNode.next = current
+                lastNode = lastNode.next
                 current.next = None
                 current = prev.next
-                lastNode = lastNode.next
         else:
             prev, current = current, current.next
 
 a = LinkedList()
 a.append(1)
+a.append(1)
+a.append(0)
+a.append(2)
 a.append(0)
 a.append(0)
 a.append(1)
+a.append(2)
 a.append(0)
-
+a.append(1)
+a.append(2)
+a.append(2)
+a.append(1)
+a.append(1)
+a.append(2)
 a.printList()
-moveAllOccurencesToEnd(a, 1)
+sort(a)
 a.printList()
-
 
