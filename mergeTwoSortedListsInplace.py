@@ -6,7 +6,7 @@ def mergeRecursive(a, b):
         return b
     if b is None:
         return a
-    if a.data < b.data:
+    if a.data <= b.data:
         a.next = mergeRecursive(a.next, b)
         return a
     else:
