@@ -1,26 +1,6 @@
 from list import LinkedList
 from list import Node
 
-def merge(a, b):
-    if a is None:
-        return b
-    if b is None:
-        return a
-    head = a if a.data < b.data else b
-    prevA = None
-    while a and b:
-        if a.data <= b.data:
-            prevA, a = a, a.next
-        else:
-            nextA, nextB = a.next, b.next
-            prevA.next = b
-            b.next = a
-            prevA = b
-            b = nextB
-    if a is None:
-        prevA.next = b
-    return head
-
 def mergeRecursive(a, b):
     if a is None:
         return b
