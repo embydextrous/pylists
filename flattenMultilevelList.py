@@ -65,10 +65,10 @@ a.next.next.next.child.child.next = Node(8)
 a.next.next.next.child.child.child = Node(19)
 a.next.next.next.child.child.child.next = Node(15)
 
-b = flattenDepthWise(a)
+b = flatten(a)
 while b:
     print b.data,
-    b = b.child
+    b = b.next
 
 
 
