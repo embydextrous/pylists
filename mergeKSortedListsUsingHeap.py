@@ -3,7 +3,7 @@ from list import Node
 import heapq
 
 def mergeKSortedLists(lists):
-    heap = [x for x in lists]
+    heap = [x for x in lists if x is not None]
     k = len(lists)
     heapq.heapify(heap)
     head = tail = Node('x')
@@ -17,7 +17,7 @@ def mergeKSortedLists(lists):
     return head.next
 
 def mergeKSortedLists2(lists):
-    heap = [x for x in lists]
+    heap = [x for x in lists if x is not None]
     k = len(lists)
     buildHeap(heap)
     head = tail = Node('x')
