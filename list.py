@@ -3,6 +3,9 @@ class Node:
         self.data = data
         self.next = None
 
+    def __lt__(self, other):
+        return self.data < other.data
+
 class LinkedList:
     def __init__(self):
         self.head = None
