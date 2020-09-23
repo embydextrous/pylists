@@ -17,8 +17,8 @@ def longestPalindrome(a):
     while current:
         next = current.next
         current.next = prev
-        result = max(result, 2 * countCommon(next, prev) + 1)
-        result = max(result, 2 * countCommon(current, prev))
+        result = max(result, 2 * countCommon(prev, next) + 1)
+        result = max(result, 2 * countCommon(current, next))
         prev, current = current, next
     reverse(prev)
     return result
@@ -37,4 +37,26 @@ for i in s:
 a.printList()
 print longestPalindrome(a.head)
 a.printList()
+
+def countCommon(s, i, j, n):
+    count = 0
+    while i >= 0 and j < n:
+        if s[i] == s[j]:
+            count += 1
+            j += 1
+            i -= 1
+        else:
+            break
+    return count
+
+def longestPalindromeString(s):
+    n = len(s)
+    result = 0
+    for i in range(n):
+        result = max(result, 2 * countCommon(s, i - 1, i + 1, n) + 1)
+        result = max(result, 2 * countCommon(s, i, i + 1, n))
+    return result
+
+s = "abcbade"
+print longestPalindromeString(s)
         
