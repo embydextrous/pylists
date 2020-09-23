@@ -59,23 +59,23 @@ def findLoopNode(a):
             return slow
     return None
 
-def printList(l):
-    loopNode = findLoopNode(l.head)
+def printList(a):
+    fast, slow = a, a
+    loopNode = None
+    while fast and fast.next:
+        print slow.data,
+        fast, slow = fast.next.next, slow.next
+        if fast == slow:
+            loopNode = slow
+            break
     if not loopNode:
-        print "List Does Not Have Loop"
-        l.printList()
+        while slow:
+            print slow.data,
+            slow = slow.next
     else:
-        print "List Has Loop"
-        lastNode, a = loopNode, l.head
-        while lastNode.next != a.next:
-            a = a.next
-            lastNode = lastNode.next
-        firstLoopNode = a.next
-        lastNode.next = None
-        l.printList()
-        lastNode.next = firstLoopNode
-
-
+        while a != loopNode:
+            print loopNode.data,
+            a, loopNode = a.next, loopNode.next
 
 a = LinkedList()
 a.head = Node(1)
@@ -84,6 +84,6 @@ a.head.next.next = Node(3)
 a.head.next.next.next = Node(2)
 a.head.next.next.next.next = Node(1)
 a.head.next.next.next.next.next = a.head.next.next
-printList(a)
+printList(a.head)
 print checkIfPalindrome(a.head)
-printList(a)
+printList(a.head)
