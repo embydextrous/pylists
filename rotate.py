@@ -1,27 +1,52 @@
 from list import LinkedList
 from list import Node
 
-def rotate(l, k):
+def leftRotate(l, k):
+    if k == 0 or l.head is None:
+        print "b"
+        return
+    size = 1
+    lastNode = l.head
+    while lastNode.next:
+        lastNode = lastNode.next
+        size += 1
+    k = k % size
     if k == 0:
         return
-    current, prev = l.head, None
-    while current and k > 0:
-        prev = current
-        current = current.next
+    lastNode.next = l.head
+    current = l.head
+    while k != 1:
         k -= 1
-    if current:
-        temp = l.head
-        l.head = current
-        prev.next = None
-        lastNode = current
-        while lastNode.next:
-            lastNode = lastNode.next
-        lastNode.next = temp
+        current = current.next
+    l.head = current.next
+    current.next = None
 
+def rightRotate(l, k):
+    if k == 0 or l.head is None:
+        print "b"
+        return
+    lastNode = l.head
+    while lastNode.next:
+        lastNode = lastNode.next
+    a, b, x = l.head, l.head, k
+    while b and x > 0:
+        b = b.next
+        x -= 1
+    if b is None:
+        return
+    else:
+        while b.next:
+            a, b = a.next, b.next
+        lastNode.next = l.head
+        l.head = a.next
+        a.next = None
+    
 a = LinkedList()
 for i in range(1, 9):
     a.append(i)
 a.printList()
-rotate(a, 1)
+leftRotate(a, 6)
+a.printList()
+rightRotate(a, 9)
 a.printList()
     
