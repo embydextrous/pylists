@@ -25,6 +25,17 @@ class CircularLinkedList:
         self.tail.next = newNode
         self.tail = self.tail.next
 
+    def size(self):
+        if self.tail is None:
+            return 0
+        count = 1
+        current = self.tail.next
+        while current != self.tail:
+            count += 1
+            current = current.next
+        return count
+
+
     def insertAfter(self, node, data):
         if node is None:
             return
@@ -101,3 +112,8 @@ c.popLast()
 c.popFirst()
 c.popLast()
 c.printList()
+
+d = CircularLinkedList()
+d.append(1)
+d.push(1)
+print d.size()
