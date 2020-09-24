@@ -35,6 +35,26 @@ class CircularLinkedList:
             newNode.next = node.next
             node.next = newNode
 
+    def popFirst(self):
+        if self.tail is None:
+            return
+        if self.tail.next == self.tail:
+            self.tail = None
+        else:
+            self.tail.next = self.tail.next.next 
+
+    def popLast(self):
+        if self.tail is None:
+            return
+        if self.tail.next == self.tail:
+            self.tail = None
+        else:
+            current = self.tail.next
+            while current.next != self.tail:
+                current = current.next
+            current.next = self.tail.next
+            self.tail = current
+
     def delete(self, data):
         if self.tail is None:
             return
@@ -72,17 +92,12 @@ c.push(3)
 c.push(5)
 c.append(8)
 c.printList()
-c.delete(9)
+c.popFirst()
 c.printList()
-c.delete(8)
+c.popLast()
 c.printList()
-c.delete(5)
-c.printList()
-c.delete(1)
-c.printList()
-c.delete(4)
-c.printList()
-c.delete(6)
-c.printList()
-c.delete(3)
+c.popLast()
+c.popLast()
+c.popFirst()
+c.popLast()
 c.printList()
