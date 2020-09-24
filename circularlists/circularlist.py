@@ -94,26 +94,3 @@ class CircularLinkedList:
                 current = current.next
             print str(self.tail.data) + " ->",
             print "head"
-
-c = CircularLinkedList()
-c.push(4)
-c.append(6)
-c.push(1)
-c.push(3)
-c.push(5)
-c.append(8)
-c.printList()
-c.popFirst()
-c.printList()
-c.popLast()
-c.printList()
-c.popLast()
-c.popLast()
-c.popFirst()
-c.popLast()
-c.printList()
-
-d = CircularLinkedList()
-d.append(1)
-d.push(1)
-print d.size()
