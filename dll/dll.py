@@ -80,6 +80,7 @@ class DLL:
             current = current.next
         print "null"
 
+'''
 dll = DLL()
 dll.push(1)
 dll.push(2)
@@ -99,3 +100,4 @@ dll.delete(dll.head.next.next.next)
 dll.printList()
 dll.delete(dll.head.next.next.next.next.next.next.next.next)
 dll.printList()
+'''
