@@ -52,6 +52,25 @@ class DLL:
             node.prev.next = newNode
             node.prev = newNode
         
+    def delete(self, node):
+        if node is None:
+            return
+        if node == self.head:
+            if self.head.next is None:
+                self.head = None
+            else:
+                self.head = self.head.next
+                self.head.prev.next = None
+                self.head.prev = None
+        else:
+            if node.next is None:
+                node.prev.next = None
+                node.prev = None
+            else:
+                node.prev.next = node.next
+                node.next.prev = node.prev
+                node.next = None
+                node.prev = None
 
     def printList(self):
         print "head <->",
@@ -73,7 +92,10 @@ dll.insertAfter(dll.head.next.next, 8)
 dll.insertBefore(dll.head, 9)
 dll.insertBefore(dll.head.next.next.next.next.next.next.next.next, 10)
 dll.insertBefore(dll.head.next.next, 11)
-
 dll.printList()
-
-#9 4 11 7 3 8 2 1 5 10 6
+dll.delete(dll.head)
+dll.printList()
+dll.delete(dll.head.next.next.next)
+dll.printList()
+dll.delete(dll.head.next.next.next.next.next.next.next.next)
+dll.printList()
