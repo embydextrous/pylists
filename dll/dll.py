@@ -4,14 +4,19 @@ class Node:
         self.next = next
         self.prev = prev
 
+    def __str__(self):
+        return str(self.data)
+
 class DLL:
     def __init__(self, node = None):
         self.head = node
+        self.tail = node
 
     def push(self, data):
         newNode = Node(data)
         if self.head is None:
             self.head = newNode
+            self.tail = newNode
         else:
             self.head.prev = newNode
             newNode.next = self.head
@@ -27,6 +32,7 @@ class DLL:
                 lastNode = lastNode.next
             lastNode.next = newNode
             newNode.prev = lastNode
+            self.tail = newNode
 
     def insertAfter(self, node, data):
         if not node or not self.head:
@@ -51,6 +57,15 @@ class DLL:
             newNode.prev = node.prev
             node.prev.next = newNode
             node.prev = newNode
+
+    def pushNode(self, node):
+        if self.head is None:
+            self.head = node
+        else:
+            node.next = self.head
+            self.head.prev = node
+            self.head = node
+
         
     def delete(self, node):
         if node is None:
@@ -58,12 +73,14 @@ class DLL:
         if node == self.head:
             if self.head.next is None:
                 self.head = None
+                self.tail = None
             else:
                 self.head = self.head.next
                 self.head.prev.next = None
                 self.head.prev = None
         else:
             if node.next is None:
+                self.tail = node.prev
                 node.prev.next = None
                 node.prev = None
             else:
