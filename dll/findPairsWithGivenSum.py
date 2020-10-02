@@ -7,7 +7,7 @@ def findPairsWithSumX(head, tail, x):
         return result
     while head != tail and tail.next != head:
         if head.data + tail.data == x:
-            result.append((head.data, tail.data))
+            result.append((head.data, tail.data)
             head, tail = head.next, tail.prev
         elif head.data + tail.data < x:
             head = head.next
@@ -15,7 +15,7 @@ def findPairsWithSumX(head, tail, x):
             tail = tail.prev
     return result
 
-s = [1]
+s = [1, 2, 4, 5, 6, 8, 9]
 dll = DLL()
 for i in s:
     dll.append(i)
