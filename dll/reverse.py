@@ -10,9 +10,16 @@ def reverse(node):
         node = node.prev
     return node
 
+def reverseData(head, tail):
+    if head is None:
+        return
+    while head != tail and head.prev != tail:
+        head.data, tail.data = tail.data, head.data
+        head, tail = head.next, tail.prev
+
 dll = DLL()
-for i in range(10):
+for i in range(9):
     dll.append(i)
 dll.printList()
-dll.head = reverse(dll.head)
+reverseData(dll.head, dll.tail)
 dll.printList()
