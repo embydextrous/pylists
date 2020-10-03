@@ -13,11 +13,6 @@ def isCircular(head):
             if current.next == loopNode:
                 return False
             current = current.next
-    else:
-        while current:
-            if current.next == head:
-                return True
-            current = current.next
     return False
 
 def findLoopNode(head):
@@ -35,5 +30,5 @@ a.append(2)
 a.append(3)
 a.append(4)
 a.append(5)
-a.head.next.next.next.next.next = a.head.next
+a.head.next.next.next.next.next = a.head
 print isCircular(a.head)
